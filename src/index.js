@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
-skillList = [
+const skillList = [
   { name: "Web Design", level: "beginner", color: "blue" },
   { name: "Java", level: "advanced", color: "red" },
   { name: "HTML+CSS", level: "intermediate", color: "purple" },
@@ -45,15 +45,17 @@ function Intro() {
 function SkillList() {
   return (
     <div className="skill-list">
-      {skillList.map(skill => <Skill skillObject = {skill} key = {skill.name}/>)}
+      {skillList.map((skill) => (
+        <Skill skillObject={skill} key={skill.name} />
+      ))}
     </div>
   );
 }
 
-function Skill({skillObject}) {
+function Skill({ skillObject }) {
   let emoji = "";
-  if(skillObject.level === "beginner") emoji = "👶";
-  else if(skillObject.level === "intermediate") emoji = "👍";
+  if (skillObject.level === "beginner") emoji = "👶";
+  else if (skillObject.level === "intermediate") emoji = "👍";
   else emoji = "💪";
   return (
     <div className="skill" style={{ background: skillObject.color }}>
